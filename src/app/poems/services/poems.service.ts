@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Poems } from '../models/poems';
 
@@ -6,11 +7,11 @@ import { Poems } from '../models/poems';
 })
 export class PoemsService {
 
-  constructor() { }
+  private readonly API = '/assets/poems.json';
 
-  List(): Poems[] {
-    return [
-      { id: '1', name: 'Warley', title: 'Poesias'}
-    ];
+  constructor( private HttpClient: HttpClient) { }
+
+  List() {
+    return this.HttpClient.get<Poems[]>(this.API);
   }
 }
