@@ -1,8 +1,6 @@
 export interface Poems {
 
-  id: number;
-  name: String;
-  title: String;
-  poem: String;
-  date: Date;
+  id: string;
+  name: string;
+  title: string;
 }

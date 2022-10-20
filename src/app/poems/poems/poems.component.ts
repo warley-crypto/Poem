@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Poems } from '../models/poems';
+import { PoemsService } from '../services/poems.service';
+
 
 @Component({
   selector: 'app-poems',
@@ -8,11 +10,20 @@ import { Poems } from '../models/poems';
 })
 export class PoemsComponent implements OnInit {
 
-  poems: Poems[] = [];
+  poems: Poems [] = [
+    { id: '1', name: 'Warley', title: 'Poesias'}
+  ];
+  displayedColumns = ['id', 'name', 'title'];
 
-  constructor() { }
+  poemsService: PoemsService;
+
+  constructor() {
+    this.poemsService = new PoemsService();
+    this.poems = this.poemsService.List();
+  }
 
   ngOnInit(): void {
+
   }
 
 }
